@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain-Specific Chatbot</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/styles/styles.css"> <!-- Link to the external CSS file -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+   
+    <div class="chat-container">
+        <div id="google_translate_element" class="goog-te-gadget"></div>
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+            }
+        </script>
+        <script type="text/javascript"
+            src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        <h5 class="modal-title" id="chatbotModalLabel">Chat with a Domain-Specific Chatbot</h5>
+
+        <div class="domain-buttons mt-4">
+            <button id="financial-analyst-button" class="btn domain-button">Financial Analyst</button>
+            <button id="google-cloud-architect-button" class="btn domain-button">Google Cloud Architect</button>
+            <button id="travel-blogger-button" class="btn domain-button">Travel Blogger</button>
+            <button id="public-relations-button" class="btn domain-button">Public Relations</button> <!-- New button for Public Relations -->
+            <button id="marketing-analyst-button" class="btn domain-button">Marketing Analyst</button> <!-- New button for Marketing Analyst -->
+            <button id="data-scientist-button" class="btn domain-button">Data Scientist</button> <!-- New button for Data Scientist -->
+            <button id="it-project-manager-button" class="btn domain-button">IT Project Manager</button> <!-- New button for IT Project Manager -->
+            <button id="e-commerce-consultant-button" class="btn domain-button">E-commerce Consultant</button>
+            <button id="health-club-manager-button" class="btn domain-button">Health Club Manager</button>
+            <button id="game-designer-button" class="btn domain-button">Game Designer</button>
+            <button id="sports-psychologist-button" class="btn domain-button">Sports Psychologist</button>
+            <button id="production-planner-button" class="btn domain-button">Production Planner</button>
+            <button id="art-education-specialist-button" class="btn domain-button">Art Education Specialist</button>
+            <button id="customer-service-representative-button" class="btn domain-button">Customer Service Representative</button>
+            <button id="film-director-button" class="btn domain-button">Film Director</button>
+
+        </div>
+    </div>
+    <div class="modal fade" id="chatbotModal" tabindex="-1" role="dialog" aria-labelledby="chatbotModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="chatbotModalLabel">Chat with a Domain-Specific Chatbot</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="messages" class="mt-4"></div>
+                    <form id="question-form">
+                        <input type="text" id="question" placeholder="Type your question...">
+                        <div class="button-container">
+                            <button type="submit">Send</button>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script>
+        
+         document.querySelectorAll('.domain-button').forEach(button => {
+            button.addEventListener('click', () => {
+                $('#chatbotModal').modal('show');
+            });
+        });
+        let selectedDomain = '';
+
+        function displayMessage(message, className) {
+    const messageElem = document.createElement('div');
+    messageElem.classList.add('message', className);
+    messageElem.innerHTML = message.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
+    document.getElementById('messages').appendChild(messageElem);
+}
+
+document.getElementById('financial-analyst-button').addEventListener('click', () => {
+    clearChat();
+    selectedDomain = 'financial_analyst';
+    document.getElementById('chatbotModalLabel').innerText = 'Chat with Financial Analyst';
+    displayMessage('Chat with Financial Analyst', 'bot-message');
+});
+
+document.getElementById('google-cloud-architect-button').addEventListener('click', () => {
+    clearChat();
+    selectedDomain = 'google_cloud_architect';
+    document.getElementById('chatbotModalLabel').innerText = 'Chat with Google Cloud Architect';
+    displayMessage('Chat with Google Cloud Architect', 'bot-message');
+});
+
+document.getElementById('travel-blogger-button').addEventListener('click', () => {
+    clearChat();
+    selectedDomain = 'travel_blogger';
+    document.getElementById('chatbotModalLabel').innerText = 'Chat with Travel Blogger';
+    displayMessage('Chat with Travel Blogger', 'bot-message');
+});
+
+document.getElementById('public-relations-button').addEventListener('click', () => {
+    clearChat();
+    selectedDomain = 'public_relations';
+    document.getElementById('chatbotModalLabel').innerText = 'Chat with Public Relations';
+    displayMessage('Chat with Public Relations', 'bot-message');
+});
+
+document.getElementById('marketing-analyst-button').addEventListener('click', () => {
+    clearChat();
+    selectedDomain = 'marketing_analyst';
+    document.getElementById('chatbotModalLabel').innerText = 'Chat with Marketing Analyst';
+    displayMessage('Chat with Marketing Analyst', 'bot-message');
+});
+
+document.getElementById('data-scientist-button').addEventListener('click', () => {
+    clearChat();
+    selectedDomain = 'data_scientist';
+    document.getElementById('chatbotModalLabel').innerText = 'Chat with Data Scientist';
+    displayMessage('Chat with Data Scientist', 'bot-message');
+});
+
+document.getElementById('it-project-manager-button').addEventListener('click', () => {
+    clearChat();
+    selectedDomain = 'it_project_manager';
+    document.getElementById('chatbotModalLabel').innerText = 'Chat with IT Project Manager';
+    displayMessage('Chat with IT Project Manager', 'bot-message');
+});
+
+document.getElementById('e-commerce-consultant-button').addEventListener('click', () => {
+    clearChat();
+    selectedDomain = 'e_commerce_consultant';
+    document.getElementById('chatbotModalLabel').innerText = 'Chat with E-commerce Consultant';
+    displayMessage('Chat with E-commerce Consultant', 'bot-message');
+});
+
+document.getElementById('health-club-manager-button').addEventListener('click', () => {
+    clearChat();
+    selectedDomain = 'health_club_manager';
+    document.getElementById('chatbotModalLabel').innerText = 'Chat with Health Club Manager';
+    displayMessage('Chat with Health Club Manager', 'bot-message');
+});
+
+document.getElementById('game-designer-button').addEventListener('click', () => {
+    clearChat();
+    selectedDomain = 'game_designer';
+    document.getElementById('chatbotModalLabel').innerText = 'Chat with Game Designer';
+    displayMessage('Chat with Game Designer', 'bot-message');
+});
+document.getElementById('sports-psychologist-button').addEventListener('click', () => {
+        clearChat();
+        selectedDomain = 'sports_psychologist';
+        document.getElementById('chatbotModalLabel').innerText = 'Chat with Sports Psychologist';
+        displayMessage('Chat with Sports Psychologist', 'bot-message');
+    });
+document.getElementById('production-planner-button').addEventListener('click', () => {
+        clearChat();
+        selectedDomain = 'production_planner';
+        document.getElementById('chatbotModalLabel').innerText = 'Chat with Production Planner';
+        displayMessage('Chat with Production Planner', 'bot-message');
+    });
+document.getElementById('art-education-specialist-button').addEventListener('click', () => {
+        clearChat();
+        selectedDomain = 'art_education_specialist';
+        document.getElementById('chatbotModalLabel').innerText = 'Chat with Art Education Specialist';
+        displayMessage('Chat with Art Education Specialist', 'bot-message');
+    });
+document.getElementById('customer-service-representative-button').addEventListener('click', () => {
+    clearChat();
+    selectedDomain = 'customer_service_representative';
+    document.getElementById('chatbotModalLabel').innerText = 'Chat with Customer Service Representative';
+    displayMessage('Chat with Customer Service Representative', 'bot-message');
+});
+document.getElementById('film-director-button').addEventListener('click', () => {
+    clearChat();
+    selectedDomain = 'film_director';
+    document.getElementById('chatbotModalLabel').innerText = 'Chat with Film Director';
+    displayMessage('Chat with Film Director', 'bot-message');
+});
+
+
+        document.getElementById('question-form').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const questionElem = document.getElementById('question');
+            const question = questionElem.value.trim();
+            if (question === '') return;
+
+            displayMessage(question, 'user-message');
+            questionElem.value = '';
+
+            displayMessage('Bot is typing...', 'bot-message');
+
+            try {
+                const response = await fetch('/ask', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question: question, profession: selectedDomain }),
+                });
+
+                const messages = document.getElementById('messages');
+                messages.removeChild(messages.lastChild);
+
+                if (response.ok) {
+                    const jsonResponse = await response.json();
+                    const answer = jsonResponse.answer;
+
+                    // Display the response from the chatbot
+                    displayMessage(answer[0].content, 'bot-message');
+                } else {
+                    console.error('Error: ', response.statusText);
+                    displayMessage("Sorry, I couldn't process your question. Please try again later.", 'bot-message');
+                }
+            } catch (error) {
+                console.error('Error: ', error);
+                displayMessage("Sorry, I couldn't process your question. Please try again later.", 'bot-message');
+            }
+        });
+
+        function clearChat() {
+            document.getElementById('messages').innerHTML = '';
+        }
+        
+    </script>
+</body>
+</html>

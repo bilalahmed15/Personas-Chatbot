@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain-Specific Chatbot</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        .chat-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .message {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .user-message {
+            background-color: #d4edda;
+            text-align: left;
+        }
+        .bot-message {
+            background-color: #ffffff;
+            text-align: left;
+        }
+        .domain-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .domain-button {
+            width: 23%; /* Adjust for margins */
+            height: 150px;
+            margin-bottom: 2%;
+            background-size: cover;
+            background-position: center;
+            border: none;
+        }
+        /* Add background images for each domain */
+        #financial-analyst-button { background-image: url('/static/financial_analyst.jpg'); }
+        #google-cloud-architect-button { background-image: url('/static/google_cloud_architect.jpg'); }
+        #travel-blogger-button { background-image: url('/static/Travel Blogger.jpg'); }
+        #public-relations-button { background-image: url('/static/Public Relations.jpg'); }
+        #marketing-analyst-button { background-image: url('/static/marketing analyst.jpg'); }
+        #data-scientist-button { background-image: url('/static/Data Science.png'); }
+        #it-project-manager-button { background-image: url('/static/IT Project manager.png'); }
+        #e-commerce-consultant-button { background-image: url('/static/E-Commerce.png'); }
+        #health-club-manager-button { background-image: url('/static/health_club_manager.jpg'); }
+        #game-designer-button { background-image: url('/static/game_designer.jpg'); }
+        @media (max-width: 768px) {
+            .chat-container {
+                max-width: 95%;
+            }
+            h2, p, input, button {
+                font-size: 1.1em;
+            }
+            .domain-button {
+                width: 48%; /* 2 buttons per row on smaller screens */
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="chat-container">
+        <h2>Chat with a Domain-Specific Chatbot</h2>
+        <div id="messages" class="mt-4"></div>
+        <div class="domain-buttons mt-4">
+            <button id="financial-analyst-button" class="btn domain-button">Financial Analyst</button>
+            <button id="google-cloud-architect-button" class="btn domain-button">Google Cloud Architect</button>
+            <button id="travel-blogger-button" class="btn domain-button">Travel Blogger</button>
+            <button id="public-relations-button" class="btn domain-button">Public Relations</button> <!-- New button for Public Relations -->
+            <button id="marketing-analyst-button" class="btn domain-button">Marketing Analyst</button> <!-- New button for Marketing Analyst -->
+            <button id="data-scientist-button" class="btn domain-button">Data Scientist</button> <!-- New button for Data Scientist -->
+            <button id="it-project-manager-button" class="btn domain-button">IT Project Manager</button> <!-- New button for IT Project Manager -->
+            <button id="e-commerce-consultant-button" class="btn domain-button">E-commerce Consultant</button>
+            <button id="health-club-manager-button" class="btn domain-button">Health Club Manager</button>
+            <button id="game-designer-button" class="btn domain-button">Game Designer</button>
+
+
+
+        </div>
+        <form id="question-form" class="mt-4">
+            <div class="form-group">
+                <input type="text" class="form-control" id="question" placeholder="Type your question here...">
+            </div>
+            <div class="button-group">
+                <button type="submit" class="btn btn-primary">Send</button>
+                <button id="reset-button" class="btn btn-danger">Reset</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        let selectedDomain = '';
+
+        function displayMessage(message, className) {
+            const messageElem = document.createElement('div');
+            messageElem.classList.add('message', className);
+            messageElem.innerHTML = message.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
+            document.getElementById('messages').appendChild(messageElem);
+        }
+
+        document.getElementById('financial-analyst-button').addEventListener('click', () => {
+            clearChat();
+            selectedDomain = 'financial_analyst';
+            displayMessage('Selected domain: Financial Analyst', 'bot-message');
+        });
+
+        document.getElementById('google-cloud-architect-button').addEventListener('click', () => {
+            clearChat();
+            selectedDomain = 'google_cloud_architect';
+            displayMessage('Selected domain: Google Cloud Architect', 'bot-message');
+        });
+
+        document.getElementById('travel-blogger-button').addEventListener('click', () => {
+            clearChat();
+            selectedDomain = 'travel_blogger';
+            displayMessage('Selected domain: Travel Blogger', 'bot-message');
+        });
+        document.getElementById('public-relations-button').addEventListener('click', () => {
+        clearChat();
+        selectedDomain = 'public_relations'; // New domain for Public Relations
+        displayMessage('Selected domain: Public Relations', 'bot-message'); // Display message for Public Relations
+    });
+    document.getElementById('marketing-analyst-button').addEventListener('click', () => {
+        clearChat();
+        selectedDomain = 'marketing_analyst'; // New domain for Marketing Analyst
+        displayMessage('Selected domain: Marketing Analyst', 'bot-message'); // Display message for Marketing Analyst
+    });
+    document.getElementById('data-scientist-button').addEventListener('click', () => {
+            clearChat();
+            selectedDomain = 'data_scientist'; // New domain for Data Scientist
+            displayMessage('Selected domain: Data Scientist', 'bot-message'); // Display message for Data Scientist
+        });
+        document.getElementById('it-project-manager-button').addEventListener('click', () => {
+            clearChat();
+            selectedDomain = 'it_project_manager'; // New domain for IT Project Manager
+            displayMessage('Selected domain: IT Project Manager', 'bot-message'); // Display message for IT Project Manager
+        });
+        document.getElementById('e-commerce-consultant-button').addEventListener('click', () => {
+            clearChat();
+            selectedDomain = 'e_commerce_consultant'; // New domain for E-commerce Consultant
+            displayMessage('Selected domain: E-commerce Consultant', 'bot-message'); // Display message for E-commerce Consultant
+        });
+        document.getElementById('health-club-manager-button').addEventListener('click', () => {
+            clearChat();
+            selectedDomain = 'health_club_manager'; // New domain for Health Club Manager
+            displayMessage('Selected domain: Health Club Manager', 'bot-message'); // Display message for Health Club Manager
+        });
+        document.getElementById('game-designer-button').addEventListener('click', () => {
+            clearChat();
+            selectedDomain = 'game_designer'; // New domain for Game Designer
+            displayMessage('Selected domain: Game Designer', 'bot-message'); // Display message for Game Designer
+        });
+
+
+
+
+
+        document.getElementById('question-form').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const questionElem = document.getElementById('question');
+            const question = questionElem.value.trim();
+            if (question === '') return;
+
+            displayMessage(question, 'user-message');
+            questionElem.value = '';
+
+            displayMessage('Bot is typing...', 'bot-message');
+
+            try {
+                const response = await fetch('/ask', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question: question, profession: selectedDomain }),
+                });
+
+                const messages = document.getElementById('messages');
+                messages.removeChild(messages.lastChild);
+
+                if (response.ok) {
+                    const jsonResponse = await response.json();
+                    const answer = jsonResponse.answer;
+
+                    // Display the response from the chatbot
+                    displayMessage(answer[0].content, 'bot-message');
+                } else {
+                    console.error('Error: ', response.statusText);
+                    displayMessage("Sorry, I couldn't process your question. Please try again later.", 'bot-message');
+                }
+            } catch (error) {
+                console.error('Error: ', error);
+                displayMessage("Sorry, I couldn't process your question. Please try again later.", 'bot-message');
+            }
+        });
+
+        function clearChat() {
+            document.getElementById('messages').innerHTML = '';
+        }
+    </script>
+</body>
+</html>

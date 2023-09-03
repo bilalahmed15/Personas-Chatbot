@@ -1,0 +1,339 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    margin: 0;
+}
+
+.chat-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.chat-header {
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.chat-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+    margin-top: 16px;
+}
+
+.chat-input form {
+    display: flex;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin-left: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.chat-reset {
+    text-align: center;
+    margin-top: 8px;
+}
+
+button {
+    background-color: #f44336;
+    color: white;
+    padding: 8px 16px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #e32e2b;
+}
+
+.result {
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    background-color: #f5f5f5;
+}
+
+.result p {
+    margin: 0;
+    margin-bottom: 4px;
+}
+
+@media screen and (max-width: 768px) {
+    .chat-container {
+        width: 90%;
+        padding: 10px;
+    }
+
+    input[type="text"], input[type="submit"], button {
+        font-size: 14px;
+    }
+
+    .avatar {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.avatar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+.domain-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 buttons in one row */
+    gap: 2%; /* Increased space between buttons */
+    width: 100%;
+    padding: 0 2%; /* Adjusted side padding */
+}
+
+.domain-button {
+    height: 250px; /* Increased height */
+    margin: 1%; /* Adjusted margin */
+    background-size: cover;
+    background-position: center;
+    border: none;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px #000000;
+    border-radius: 10px;
+    transition: transform 0.3s;
+    width: calc(90% - 2%); /* Increased width */
+}
+
+@media (max-width: 768px) {
+    .domain-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .domain-button {
+        width: calc(90% - 2%); /* Adjusted for 2 buttons per row on smaller screens */
+        margin: 2%; /* Adjusted margin for smaller screens */
+    }
+}
+
+        #financial-analyst-button { background-image: url('/static/fincial.png'); }
+        #google-cloud-architect-button { background-image: url('/static/Google.png'); }
+        #travel-blogger-button { background-image: url('/static/Travel Blogger.jpg'); }
+        #public-relations-button { background-image: url('/static/Public Relations.jpg'); }
+        #marketing-analyst-button { background-image: url('/static/marketing analyst.jpg'); }
+        #data-scientist-button { background-image: url('/static/Data Science.png'); }
+        #it-project-manager-button { background-image: url('/static/IT Project manager.png'); }
+        #e-commerce-consultant-button { background-image: url('/static/E-Commerce.png'); }
+        #health-club-manager-button { background-image: url('/static/fitness.png'); }
+        #game-designer-button { background-image: url('/static/Game.png'); }
+        #sports-psychologist-button{background-image: url('/static/sports.jpg'); }
+        #production-planner-button{background-image: url('/static/Production.jpg');}
+        #art-education-specialist-button{ background-image: url('/static/Art.png');}
+        #customer-service-representative-button{background-image: url('/static/Game.png');}
+        #film-director-button{background-image: url('/static/Film Director.png');}
+.domain-button:hover {
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+/* Chatbot Modal Styling */
+.modal-content {
+    border-radius: 15px; /* Rounded corners for the modal */
+    overflow: hidden; /* To ensure child elements don't spill out */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    background: linear-gradient(135deg, #6EE7B7 0%, #3FA7D6 100%); /* Gradient background */
+}
+
+.modal-header {
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+    border-bottom: none; /* Remove default border */
+    color: #333; /* Dark text color */
+}
+
+.modal-title {
+    font-weight: 500; /* Semi-bold font weight */
+}
+
+.modal-body {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    padding: 20px;
+}
+
+#messages {
+    max-height: 300px; /* Limit the height */
+    overflow-y: auto; /* Scrollable area for messages */
+    margin-bottom: 20px; /* Space at the bottom */
+}
+
+.message {
+    border-radius: 10px; /* Rounded corners for messages */
+    margin-bottom: 10px;
+}
+
+.bot-message {
+    background-color: #ffffff; /* White background for bot messages */
+    color: #333; /* Dark text color */
+}
+
+.user-message {
+    background-color: #3FA7D6; /* Color for user messages */
+    color: #ffffff; /* White text color */
+}
+
+#question-form {
+    display: flex;
+    gap: 10px; /* Space between input and buttons */
+    
+}
+
+#question {
+    flex: 2; /* Increase the flex value to allow it to take more space */
+    border-radius: 10px; /* Rounded corners */
+    border: none; /* Remove default border */
+    padding: 10px 15px; /* Padding for input */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 700%;
+}
+
+button[type="submit"], #reset-button {
+    flex: 0.5; /* Reduce the flex value to make buttons smaller */
+    border-radius: 10px; /* Rounded corners for buttons */
+    border: none; /* Remove default border */
+    padding: 10px 20px; /* Padding for buttons */
+    font-weight: 500; /* Semi-bold font weight */
+    transition: all 0.3s; /* Smooth transition for hover effects */
+    width: 50%; /* Adjust the width of the buttons */
+    margin: 5px 0; 
+}
+
+button[type="submit"] {
+    background-color: #6EE7B7; /* Color for send button */
+    color: #ffffff; /* White text color */
+    width: 100%; /* Adjust the width of the buttons */
+    margin: 5px 0; 
+}
+
+button[type="submit"]:hover {
+    background-color: #5dd6a7; /* Slightly darker color on hover */
+}
+
+#reset-button {
+    background-color: #f44336; /* Red color for reset button */
+    color: #ffffff; /* White text color */
+}
+
+#reset-button:hover {
+    background-color: #e32e2b; /* Slightly darker red on hover */
+}
+.user-message {
+    font-weight: bold; /* Bold font for user's messages */
+    background-color: #4CAF50; /* Green background */
+    padding: 10px; /* Padding for better appearance */
+    border-radius: 5px; /* Rounded corners */
+    color: white; /* White text color for better contrast against green background */
+    margin-bottom: 10px; /* Space between messages */
+}
+/* Style for the Google Translate container */
+#google_translate_element {
+    display: inline-block;
+    position: relative;
+    margin: 10px;
+    padding: 5px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Style for the Google Translate dropdown button */
+.goog-te-combo {
+    background: linear-gradient(to bottom, #ffffff, #f1f1f1);
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    color: #333;
+    font-size: 14px;
+    outline: none;
+}
+
+/* Style for the Google Translate dropdown arrow */
+.goog-te-gadget-icon {
+    display: none; /* Hide the default dropdown arrow */
+}
+
+/* Style for the Google Translate overlay */
+.goog-te-menu-frame {
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 6px;
+}
+
+/* Style for the Google Translate menu items */
+.goog-te-menu2 {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+}
+
+/* Style for the Google Translate menu item text */
+.goog-te-menu2-item {
+    color: #333;
+    font-size: 14px;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease;
+}
+
+.goog-te-menu2-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* Style for the Google Translate close button */
+.goog-close-link {
+    display: none; /* Hide the close button */
+}
+
+/* Style for the Google Translate powered by logo */
+.goog-te-logo {
+    display: none; /* Hide the "powered by Google" logo */
+}
+

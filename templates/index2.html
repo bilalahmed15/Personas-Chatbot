@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with a Google Cloud Architect</title>
+    <!-- <h2>Advanced AI-Powered Reasoning Assistant</h2>
+    <h6>ThinkBotIQ harnesses the power of large language models and state-of-the-art reasoning techniques to deliver an intelligent chatbot capable of understanding complex queries, providing insightful responses, and engaging in meaningful conversations.  Elevate your AI experience with ThinkBotIQ, your personal guide to the world of knowledge and AI-assisted problem solving.</h6>-->
+    
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='styles/styles.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="avatar-container">
+            <img src="{{ url_for('static',filename='llmavatar.png') }}" alt="Chatbot Avatar" class="avatar">
+        </div>
+        <div class="chat-header">
+            <h3>Chat with a Google Cloud Architect</h3>
+            <h4>Testing</h4>
+        </div>
+        <div id="results-container" class="chat-content"></div>
+        <div class="chat-input">
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Type your message...">
+                <input type="submit" value="Send">
+            </form>
+        </div>
+        <div class="chat-reset">
+            <button id="reset-button">Reset Chat</button>
+        </div>
+    </div>
+    <script src="{{ url_for('static',filename='script.js') }}"></script>
+</body>
+</html>
